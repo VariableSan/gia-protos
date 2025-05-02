@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package feed;
+
+option go_package = "/variablesan.feed.v1;feedv1";
+
+import "google/protobuf/timestamp.proto";
+
+service FeedService {
+  rpc CreateFeed(CreateFeedRequest) returns (CreateFeedResponse);
+  rpc GetFeed(GetFeedRequest) returns (GetFeedResponse);
+  rpc ListFeeds(ListFeedsRequest) returns (ListFeedsResponse);
+  rpc UpdateFeed(UpdateFeedRequest) returns (UpdateFeedResponse);
+  rpc DeleteFeed(DeleteFeedRequest) returns (DeleteFeedResponse);
+
+  rpc ModerateFeed(ModerateFeedRequest) returns (ModerateFeedResponse);
+}
+
+enum FeedStatus {
+  FEED_STATUS_UNKNOWN = 0;
+  PENDING = 1;
+  ACCEPTED = 2;
+  REJECTED = 3;
+  NEEDS_CHANGES = 4;
+}
+
+message Feed {
+  string id = 1;
+  string author_id = 2;
+  string title = 3;
+  string content = 4;
+  FeedStatus status = 5;
+  string moderator_comment = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+message CreateFeedRequest {
+  string title = 1;
+  string content = 2;
+}
+
+message CreateFeedResponse {
+  Feed feed = 1;
+}
+
+message GetFeedRequest {
+  string id = 1;
+}
+
+message GetFeedResponse {
+  Feed feed = 1;
+}
+
+message ListFeedsRequest {
+  int32 page = 1;
+  int32 page_size = 2;
+  bool only_accepted = 3;
+}
+
+message ListFeedsResponse {
+  repeated Feed feeds = 1;
+}
+
+message UpdateFeedRequest {
+  string id = 1;
+  string title = 2;
+  string content = 3;
+}
+
+message UpdateFeedResponse {
+  Feed feed = 1;
+}
+
+message DeleteFeedRequest {
+  string id = 1;
+}
+
+message DeleteFeedResponse {
+  bool success = 1;
+}
+
+message ModerateFeedRequest {
+  string id = 1;
+  FeedStatus status = 2;
+  string comment = 3;
+}
+
+message ModerateFeedResponse {
+  Feed feed = 1;
+}
+
