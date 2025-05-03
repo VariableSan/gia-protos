@@ -239,7 +239,7 @@ type CreateFeedResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Feed *Feed `protobuf:"bytes,1,opt,name=feed,proto3" json:"feed,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
 func (x *CreateFeedResponse) Reset() {
@@ -274,11 +274,11 @@ func (*CreateFeedResponse) Descriptor() ([]byte, []int) {
 	return file_feed_feed_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CreateFeedResponse) GetFeed() *Feed {
+func (x *CreateFeedResponse) GetId() string {
 	if x != nil {
-		return x.Feed
+		return x.Id
 	}
-	return nil
+	return ""
 }
 
 type GetFeedRequest struct {
@@ -829,10 +829,9 @@ var file_feed_feed_proto_rawDesc = []byte{
 	0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e,
 	0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74,
-	0x22, 0x34, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1e, 0x0a, 0x04, 0x66, 0x65, 0x65, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x66, 0x65, 0x65, 0x64, 0x2e, 0x46, 0x65, 0x65, 0x64,
-	0x52, 0x04, 0x66, 0x65, 0x65, 0x64, 0x22, 0x20, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x46, 0x65, 0x65,
+	0x22, 0x24, 0x0a, 0x12, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x46, 0x65, 0x65, 0x64, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x20, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x46, 0x65, 0x65,
 	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x31, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x46,
 	0x65, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1e, 0x0a, 0x04, 0x66,
@@ -943,29 +942,28 @@ var file_feed_feed_proto_depIdxs = []int32{
 	0,  // 0: feed.Feed.status:type_name -> feed.FeedStatus
 	14, // 1: feed.Feed.created_at:type_name -> google.protobuf.Timestamp
 	14, // 2: feed.Feed.updated_at:type_name -> google.protobuf.Timestamp
-	1,  // 3: feed.CreateFeedResponse.feed:type_name -> feed.Feed
-	1,  // 4: feed.GetFeedResponse.feed:type_name -> feed.Feed
-	1,  // 5: feed.ListFeedsResponse.feeds:type_name -> feed.Feed
-	1,  // 6: feed.UpdateFeedResponse.feed:type_name -> feed.Feed
-	0,  // 7: feed.ModerateFeedRequest.status:type_name -> feed.FeedStatus
-	1,  // 8: feed.ModerateFeedResponse.feed:type_name -> feed.Feed
-	2,  // 9: feed.FeedService.CreateFeed:input_type -> feed.CreateFeedRequest
-	4,  // 10: feed.FeedService.GetFeed:input_type -> feed.GetFeedRequest
-	6,  // 11: feed.FeedService.ListFeeds:input_type -> feed.ListFeedsRequest
-	8,  // 12: feed.FeedService.UpdateFeed:input_type -> feed.UpdateFeedRequest
-	10, // 13: feed.FeedService.DeleteFeed:input_type -> feed.DeleteFeedRequest
-	12, // 14: feed.FeedService.ModerateFeed:input_type -> feed.ModerateFeedRequest
-	3,  // 15: feed.FeedService.CreateFeed:output_type -> feed.CreateFeedResponse
-	5,  // 16: feed.FeedService.GetFeed:output_type -> feed.GetFeedResponse
-	7,  // 17: feed.FeedService.ListFeeds:output_type -> feed.ListFeedsResponse
-	9,  // 18: feed.FeedService.UpdateFeed:output_type -> feed.UpdateFeedResponse
-	11, // 19: feed.FeedService.DeleteFeed:output_type -> feed.DeleteFeedResponse
-	13, // 20: feed.FeedService.ModerateFeed:output_type -> feed.ModerateFeedResponse
-	15, // [15:21] is the sub-list for method output_type
-	9,  // [9:15] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	1,  // 3: feed.GetFeedResponse.feed:type_name -> feed.Feed
+	1,  // 4: feed.ListFeedsResponse.feeds:type_name -> feed.Feed
+	1,  // 5: feed.UpdateFeedResponse.feed:type_name -> feed.Feed
+	0,  // 6: feed.ModerateFeedRequest.status:type_name -> feed.FeedStatus
+	1,  // 7: feed.ModerateFeedResponse.feed:type_name -> feed.Feed
+	2,  // 8: feed.FeedService.CreateFeed:input_type -> feed.CreateFeedRequest
+	4,  // 9: feed.FeedService.GetFeed:input_type -> feed.GetFeedRequest
+	6,  // 10: feed.FeedService.ListFeeds:input_type -> feed.ListFeedsRequest
+	8,  // 11: feed.FeedService.UpdateFeed:input_type -> feed.UpdateFeedRequest
+	10, // 12: feed.FeedService.DeleteFeed:input_type -> feed.DeleteFeedRequest
+	12, // 13: feed.FeedService.ModerateFeed:input_type -> feed.ModerateFeedRequest
+	3,  // 14: feed.FeedService.CreateFeed:output_type -> feed.CreateFeedResponse
+	5,  // 15: feed.FeedService.GetFeed:output_type -> feed.GetFeedResponse
+	7,  // 16: feed.FeedService.ListFeeds:output_type -> feed.ListFeedsResponse
+	9,  // 17: feed.FeedService.UpdateFeed:output_type -> feed.UpdateFeedResponse
+	11, // 18: feed.FeedService.DeleteFeed:output_type -> feed.DeleteFeedResponse
+	13, // 19: feed.FeedService.ModerateFeed:output_type -> feed.ModerateFeedResponse
+	14, // [14:20] is the sub-list for method output_type
+	8,  // [8:14] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_feed_feed_proto_init() }

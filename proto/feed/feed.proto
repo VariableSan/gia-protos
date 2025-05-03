@@ -41,7 +41,7 @@ message CreateFeedRequest {
 }
 
 message CreateFeedResponse {
-  Feed feed = 1;
+  string id = 1; 
 }
 
 message GetFeedRequest {
